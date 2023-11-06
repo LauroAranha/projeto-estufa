@@ -35,7 +35,7 @@ void loop() {
 
 void toggleServo(int t)
 {
-    if (t >= 35 && t == 0) {
+    if (t >= 35 && pos == 0) {
         for(pos = 0; pos < 90; pos++)
         {
             s.write(pos);
