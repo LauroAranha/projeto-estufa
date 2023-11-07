@@ -1,15 +1,10 @@
 import React from 'react';
-import { Button } from '@carbon/react';
+import Header from './Components/Header';
 
 import './app.scss';
 
 const App = () => {
-  return (
-    <>
-      <div>test</div>
-      <Button>Test</Button>
-    </>
-  );
+  return <Header />;
 };
 
 export default App;

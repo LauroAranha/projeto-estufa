@@ -1,0 +1,41 @@
+.header-container {
+  display: flex;
+  box-shadow: 1px 0px 24px rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.container-user {
+  display: flex;
+  flex-direction: row;
+  margin: 16px 24px 16px 24px;
+}
+
+.user-name {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.user-email {
+  color: #878d96;
+  font-size: 14px;
+  font-weight: 450;
+  word-wrap: break-word;
+}
+
+.exit-account-icon {
+  width: 24px;
+  height: 24px;
+  align-self: center;
+  margin-left: 16px;
+}
