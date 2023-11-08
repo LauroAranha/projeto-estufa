@@ -11,6 +11,7 @@
 
 DHTesp dht;
 int umidade;
+bool isBombActive = false;
 static bool b = false;
 int wifiCounter = 0;
 
@@ -44,19 +45,29 @@ void loop() {
 
   umidade = ( 100 - ( (analogRead(sensor)/1023.00) * 100 ) );
 
-  String url_bomba = "https://" + String(http_site) + http_path + "/" + String(temperatura) + "/" + String(umidade);
+  String url_bomba;
 
   Serial.println(umidade);
 
   if(umidade <= 65) {
     pinMode(minibomba, HIGH);
+    isBombActive = true;
+
+    url_bomba = "https://" + String(http_site) + http_path + "/" + String(temperatura) + "/" + String(umidade);
+
+    connectToServer(url_bomba);
   } else {
     pinMode(minibomba, LOW);
+    isBombActive = false;
+
+    url_bomba = "https://" + String(http_site) + http_path + "/" + String(temperatura) + "/" + String(umidade);
+
+    connectToServer(url_bomba);
   }
   delay(500);
 }
 
-bool connectToServer () {
+bool connectToServer (url) {
   if (!client.connect(http_site, http_port)) {
       Serial.println("Falha na conexão com o servidor");
       delay(5000);
