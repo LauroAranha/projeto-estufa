@@ -1,0 +1,16 @@
+.page-title-container {
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px #81d8af solid;
+}
+
+.page-title {
+  color: #484848;
+  font-size: 32px;
+  font-weight: 300;
+  word-wrap: break-word;
+  margin-bottom: 6px;
+}
