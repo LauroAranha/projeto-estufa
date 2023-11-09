@@ -1,0 +1,41 @@
+.navbar-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 28px;
+
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    border-radius: 0%;
+    justify-content: flex-start;
+    padding: 32px 24px 26px 24px;
+    font-size: 14px;
+    font-family: IBM Plex Sans;
+    font-weight: 700;
+    word-wrap: break-word;
+    text-transform: capitalize;
+  }
+
+  .cells-container-overview {
+    color: #f1934f;
+  }
+  .cells-container-overview:focus {
+    border-bottom: 3px solid #f1934f !important;
+  }
+  .cells-container-history {
+    color: #81d8af;
+  }
+  .cells-container-history:focus {
+    border-bottom: 3px solid #81d8af !important;
+  }
+  .cells-container-economy {
+    color: #a9d850;
+  }
+  .cells-container-economy:focus {
+    border-bottom: 3px solid #a9d850 !important;
+  }
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root:focus {
+  }
+  img {
+    margin-right: 16px;
+  }
+}
