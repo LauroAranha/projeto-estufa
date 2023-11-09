@@ -1,10 +1,19 @@
-import React from 'react';
-import Header from './Components/Header';
+/* eslint-disable perfectionist/sort-imports */
+import 'src/global.css';
 
-import './app.scss';
+import { useScrollToTop } from 'src/hooks/use-scroll-to-top';
 
-const App = () => {
-  return <Header />;
-};
+import Router from 'src/routes/sections';
+import ThemeProvider from 'src/theme';
 
-export default App;
+// ----------------------------------------------------------------------
+
+export default function App() {
+  useScrollToTop();
+
+  return (
+    <ThemeProvider>
+      <Router />
+    </ThemeProvider>
+  );
+}
