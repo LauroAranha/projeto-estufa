@@ -6,36 +6,18 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  .button-menu {
+    margin-right: 24px;
+  }
 }
 
-.logo {
-  margin-left: 32px;
-  margin-right: 32px;
+.container-logo {
+  padding: 24px 40px 24px 40px;
+  margin-right: 40px;
 }
 
-.container-user {
-  display: flex;
-  flex-direction: row;
-  margin: 16px 24px 16px 24px;
-}
-
-.user-name {
-  color: black;
-  font-size: 16px;
-  font-weight: 500;
-  word-wrap: break-word;
-}
-
-.user-email {
-  color: #878d96;
-  font-size: 14px;
-  font-weight: 450;
-  word-wrap: break-word;
-}
-
-.exit-account-icon {
-  width: 24px;
-  height: 24px;
-  align-self: center;
-  margin-left: 16px;
+.logo-img {
+  width: 112px;
+  height: auto;
+  object-fit: fill;
 }
