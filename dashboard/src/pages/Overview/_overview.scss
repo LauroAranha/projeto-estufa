@@ -36,3 +36,9 @@
   font-weight: 400;
   word-wrap: break-word;
 }
+
+.side-bar-container {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 24px;
+}

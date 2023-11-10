@@ -8,34 +8,34 @@ import './_lineChart.scss';
 
 const data = [
   {
-    group: 'Temperatura',
+    group: 'Humidade',
     key: '12:00',
-    value: 34,
+    value: 50,
   },
   {
-    group: 'Temperatura',
+    group: 'Humidade',
     key: '13:00',
-    value: 36,
+    value: 52,
   },
   {
-    group: 'Temperatura',
+    group: 'Humidade',
     key: '14:00',
-    value: 35,
+    value: 54,
   },
   {
-    group: 'Temperatura',
+    group: 'Humidade',
     key: '15:00',
-    value: 32,
+    value: 54,
   },
   {
-    group: 'Temperatura',
+    group: 'Humidade',
     key: '16:00',
-    value: 30,
+    value: 52,
   },
 ];
 
 const options = {
-  title: 'Soma de Temperatura por Data',
+  title: 'Soma de Humidade por Data',
   axes: {
     bottom: {
       title: 'Horário',
@@ -44,14 +44,14 @@ const options = {
     },
     left: {
       mapsTo: 'value',
-      title: 'Soma de temperatura',
+      title: 'Soma de humidade',
       scaleType: 'linear',
     },
   },
   height: '400px',
 };
 
-const LineChartCompoenent = () => {
+const LineChartHumidity = () => {
   return (
     <div className="line-chart-container">
       <LineChart data={data} options={options}></LineChart>
@@ -59,4 +59,4 @@ const LineChartCompoenent = () => {
   );
 };
 
-export default LineChartCompoenent;
+export default LineChartHumidity;

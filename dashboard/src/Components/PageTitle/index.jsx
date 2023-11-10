@@ -1,3 +1,3 @@
-import Overview from './Overview';
+import PageTitle from './PageTitle';
 
-export default Overview;
+export default PageTitle;
