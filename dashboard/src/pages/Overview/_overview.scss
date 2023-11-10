@@ -1,1 +1,38 @@
+.top-container {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 24px;
+}
 
+.temperature-humidity-container {
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 24px;
+  align-items: center;
+}
+.data-temp-humi-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.data-temp-humi {
+  color: #484848;
+  font-size: 84px;
+  font-family: IBM Plex Mono;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.data-temp-humi-desc {
+  color: #484848;
+  font-size: 24px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
