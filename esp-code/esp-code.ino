@@ -1,27 +1,28 @@
 #include <SimpleDHT.h>
 #include <Servo.h>
 
-#define SERVO 12
-#define RELE 4
-#define pinDHT11 16
+#define PINMINIBOMBA 2
+#define PINRELAY 4
+#define PINSERVO 12
+#define PINDHT11 16
 
 SimpleDHT11 dht11;
-
 Servo servo;
-int pos;
 
 unsigned long previousMillis = 0;
-
 const long interval = 5000; // intervalo de 5 segundos entre as leituras
-
 const long maxTemp = 25;
 const long minTemp = maxTemp - 1;
+const long maxHumid = 65;
 
 void setup()
 {
     Serial.begin(9600);
-    pinMode(RELE, OUTPUT);
-    servo.attach(SERVO);
+
+    pinMode(PINRELAY, OUTPUT);
+    pinMode(PINMINIBOMBA, HIGH);
+
+    servo.attach(PINSERVO);
     servo.write(0);
 }
 
@@ -35,28 +36,37 @@ void loop()
 
         byte temperature = 0;
         byte humid = 0;
-        int err = dht11.read(pinDHT11, &temperature, &humid, NULL);
+        int err = dht11.read(PINDHT11, &temperature, &humid, NULL);
 
         if (err == 1)
         {
-            Serial.println("Falha na leitura do sensor.");
+            Serial.println(F("Falha na leitura do sensor."));
             return;
         }
 
-        Serial.print((int)temperature);
-        Serial.print(" *C, ");
-        Serial.print((int)humid);
-        Serial.println(" %");
+        Serial.print(temperature);
+        Serial.print(F(" *C, "));
+        Serial.print(humid);
+        Serial.println(F(" %"));
 
-        if ((int)temperature >= maxTemp)
+        if (temperature >= maxTemp)
         {
-            digitalWrite(RELE, LOW);
+            digitalWrite(PINRELAY, LOW);
             servo.write(0);
         }
-        else if ((int)temperature <= minTemp)
+        else if (temperature <= minTemp)
         {
-            digitalWrite(RELE, HIGH);
+            digitalWrite(PINRELAY, HIGH);
             servo.write(90);
+        }
+
+        if (humid <= maxHumid)
+        {
+            pinMode(PINMINIBOMBA, HIGH);
+        }
+        else
+        {
+            pinMode(PINMINIBOMBA, LOW);
         }
     }
 }
