@@ -1,63 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import { LineChart } from '@carbon/charts-react';
 import '@carbon/charts-react/styles.css';
 
+import db from '../../api/database.js'
+
 // Importando estilos
 import './_lineChart.scss';
 
-const data = [
-  {
-    group: 'Temperatura',
-    key: '12:00',
-    value: 34,
-  },
-  {
-    group: 'Temperatura',
-    key: '13:00',
-    value: 36,
-  },
-  {
-    group: 'Temperatura',
-    key: '14:00',
-    value: 35,
-  },
-  {
-    group: 'Temperatura',
-    key: '15:00',
-    value: 32,
-  },
-  {
-    group: 'Temperatura',
-    key: '16:00',
-    value: 30,
-  },
-  {
-    group: 'Humidade',
-    key: '12:00',
-    value: 50,
-  },
-  {
-    group: 'Humidade',
-    key: '13:00',
-    value: 52,
-  },
-  {
-    group: 'Humidade',
-    key: '14:00',
-    value: 54,
-  },
-  {
-    group: 'Humidade',
-    key: '15:00',
-    value: 54,
-  },
-  {
-    group: 'Humidade',
-    key: '16:00',
-    value: 52,
-  },
-];
+const [data, setData] = useState([]);
+
+useEffect(() => {
+    async function getRawData(){
+      await db.getDashboardData();
+    }
+    console.log(rawData)
+    const rawData = getRawData();
+
+    const humidData = rawData.map((entry) => {
+      return {
+        group: 'Humidity',
+        key: entry.createdAt,
+        value: entry.humid
+      }
+    });
+
+    const tempData = rawData.map((entry) => {
+      return {
+        group: 'Temperature',
+        key: entry.createdAt,
+        value: entry.temperature
+      }
+    });
+
+    setData(humidData.concat(tempData))
+    console.log(data);    
+
+}, [])
+
 
 const options = {
   title: 'Soma de Temperatura por Data',
