@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   DataTable,
   Table,
@@ -8,9 +8,14 @@ import {
   TableBody,
   TableCell,
 } from '@carbon/react';
+import moment from 'moment';
+import 'moment/min/locales.min';
+moment.locale('pt-br');
 
 // Importando estilos
 import './_sideBar.scss';
+
+import db from '../../api/database';
 
 // Importando imagens
 
@@ -23,6 +28,20 @@ import './_sideBar.scss';
 // ];
 
 const SideBar = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [triggerUpdate, setTriggerUpdate] = useState(true);
+
+  useEffect(() => {
+    async function getRawData() {
+      const rawData = await db.getAverageData();
+      setData(rawData);
+      setIsLoading(false);
+    }
+
+    getRawData();
+  }, [triggerUpdate]);
+
   return (
     <div className="side-bar-content">
       <p className="side-bar-title">Claraboia</p>
@@ -30,55 +49,26 @@ const SideBar = () => {
         <TableHead>
           <TableRow>
             <TableHeader>Data</TableHeader>
-            <TableHeader>Status</TableHeader>
             <TableHeader>Horario</TableHeader>
+            <TableHeader>Status</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell className="cells-title-style-maintenance">
-              09/11/2023
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              12:00
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              Aberto
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="cells-title-style-maintenance">
-              09/11/2023
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              13:00
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              Fechado
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="cells-title-style-maintenance">
-              10/11/2023
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              16:00
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              Aberto
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="cells-title-style-maintenance">
-              10/11/2023
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              18:00
-            </TableCell>
-            <TableCell className="cells-title-style-maintenance">
-              Fechado
-            </TableCell>
-          </TableRow>
+          {data.map((entry) => {
+            return (
+              <TableRow key={entry.id}>
+                <TableCell className="cells-title-style-maintenance">
+                  {moment(entry.createdat).format('MMMM Do')}
+                </TableCell>
+                <TableCell className="cells-title-style-maintenance">
+                  {moment(entry.createdat).format('h:mm a')}
+                </TableCell>
+                <TableCell className="cells-title-style-maintenance">
+                  {entry.servoopen ? 'Aberto' : 'Fechado'}
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

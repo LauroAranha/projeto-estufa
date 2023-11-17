@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import db from '../../api/database.js';
+import { getAverage } from '../../util/math.js';
+
 // Importando Components
 import PageTitle from '../../Components/PageTitle';
 import LineChartTemperature from '../../Components/LineChartTemperature';
@@ -12,6 +15,23 @@ import Temperature from '../../icons/temperature.svg';
 import './_overview.scss';
 
 const Overview = () => {
+  const [humid, setHumid] = useState([]);
+  const [temp, setTemp] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [triggerUpdate, setTriggerUpdate] = useState(true);
+
+  useEffect(() => {
+    async function getRawData() {
+      const rawData = await db.getAverageData();
+      let data = getAverage(rawData);
+      setHumid(data[1].media.toFixed(1));
+      setTemp(data[0].media.toFixed(1));
+      setIsLoading(false);
+    }
+
+    getRawData();
+  }, [triggerUpdate]);
+
   return (
     <div className="">
       <PageTitle PageTitle="Resumo diário" />
@@ -31,8 +51,8 @@ const Overview = () => {
                 className="humidity-icon"
               />
               <div className="data-temp-humi-container">
-                <p className="data-temp-humi">90,0%</p>
-                <p className="data-temp-humi-desc">Máximo de Humidade</p>
+                <p className="data-temp-humi">{humid}%</p>
+                <p className="data-temp-humi-desc">Média de Humidade</p>
               </div>
             </div>
             <div className="temperature-humidity-container">
@@ -42,7 +62,7 @@ const Overview = () => {
                 className="humidity-icon"
               />
               <div className="data-temp-humi-container">
-                <p className="data-temp-humi">23,4</p>
+                <p className="data-temp-humi">{temp}°C</p>
                 <p className="data-temp-humi-desc">Média de Temperatura</p>
               </div>
             </div>

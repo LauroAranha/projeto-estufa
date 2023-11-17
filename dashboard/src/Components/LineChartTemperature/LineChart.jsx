@@ -54,7 +54,7 @@ const LineChartTemperature = () => {
         };
       });
       const finalData = humidData.concat(tempData);
-      console.log(finalData);
+      //console.log(finalData);
       setData(finalData);
       setIsLoading(false);
     }
