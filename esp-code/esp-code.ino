@@ -32,7 +32,8 @@ void setup()
     pinMode(PINMINIBOMBA, HIGH);
 
     servo.attach(PINSERVO);
-    servo.write(0);
+    myservo.write(180);
+    pos = 180;
 
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED)
@@ -73,13 +74,13 @@ void loop()
         if (temperature >= maxTemp)
         {
             digitalWrite(PINFAN, LOW);
-            servo.write(0);
+            toggleServo(27);
             servoOpen = true;
         }
         else
         {
             digitalWrite(PINFAN, HIGH);
-            servo.write(90);
+            toggleServo(24);
         }
 
         if (!sendDataToServer(temperature, humid, servoOpen, bombActive))
@@ -123,4 +124,19 @@ bool sendDataToServer(int temperature, int humid, bool servoOpen, bool bombActiv
 
     Serial.println("Falha na conexão com o servidor");
     return false;
+}
+
+void toggleServo(int t){
+  if(t >= 25){
+      for (pos = 180; pos >= 0; pos -= 1) { 
+        myservo.write(pos);              
+        delay(15);                       
+      }
+  }
+  if(t < 25){
+      for (pos = 0; pos >= 180; pos += 1) { 
+        myservo.write(pos);        
+        delay(15);                      
+      }
+  }
 }
