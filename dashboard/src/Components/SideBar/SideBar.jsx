@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  DataTable,
+  Pagination,
   Table,
   TableHead,
   TableRow,
@@ -17,60 +17,71 @@ import './_sideBar.scss';
 
 import db from '../../api/database';
 
-// Importando imagens
-
-// const data = [
-//   {
-//     date: '09 / 11 / 2023',
-//     hour: '12:00',
-//     status: 'aberto',
-//   },
-// ];
-
 const SideBar = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [triggerUpdate, setTriggerUpdate] = useState(true);
+  const [pageSize, setPageSize] = useState(5);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalItems, setTotalItems] = React.useState(0);
 
   useEffect(() => {
     async function getRawData() {
       const rawData = await db.getAverageData();
       setData(rawData);
+      setTotalItems(rawData.length);
       setIsLoading(false);
     }
 
     getRawData();
   }, [triggerUpdate]);
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber.page);
+    if (pageNumber.pageSize !== pageSize) {
+      setPageSize(pageNumber.pageSize);
+      setTotalItems(data.length);
+      setCurrentPage(1);
+    }
+  };
+
+  const renderBody = () => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const currentData = data.slice(startIndex, endIndex);
+
+    return currentData.map((row) => (
+      <TableRow key={row.id}>
+        <TableCell>{moment(row.createdat).format('MMMM Do')}</TableCell>
+        <TableCell>{moment(row.createdat).format('h:mm a')}</TableCell>
+        <TableCell>{row.servoopen ? 'Aberto' : 'Fechado'}</TableCell>
+      </TableRow>
+    ));
+  };
+
   return (
     <div className="side-bar-content">
-      <p className="side-bar-title">Claraboia</p>
-      <Table aria-label="sample table">
-        <TableHead>
-          <TableRow>
-            <TableHeader>Data</TableHeader>
-            <TableHeader>Horario</TableHeader>
-            <TableHeader>Status</TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((entry) => {
-            return (
-              <TableRow key={entry.id}>
-                <TableCell className="cells-title-style-maintenance">
-                  {moment(entry.createdat).format('MMMM Do')}
-                </TableCell>
-                <TableCell className="cells-title-style-maintenance">
-                  {moment(entry.createdat).format('h:mm a')}
-                </TableCell>
-                <TableCell className="cells-title-style-maintenance">
-                  {entry.servoopen ? 'Aberto' : 'Fechado'}
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+      <div>
+        <p className="side-bar-title">Claraboia</p>
+        <Table aria-label="sample table " className="table-skylight">
+          <TableHead>
+            <TableRow>
+              <TableHeader>Data</TableHeader>
+              <TableHeader>Horario</TableHeader>
+              <TableHeader>Status</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>{renderBody()}</TableBody>
+        </Table>
+        <Pagination
+          page={currentPage}
+          pageNumberText="Page Number"
+          pageSize={pageSize}
+          pageSizes={[5, 10, 20, 50]}
+          totalItems={totalItems}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

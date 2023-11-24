@@ -11,7 +11,7 @@ import db from '../../api/database.js';
 import './_lineChart.scss';
 
 const options = {
-  title: 'Soma de Temperatura por Data',
+  title: '',
   axes: {
     bottom: {
       title: 'Horário',
@@ -25,7 +25,7 @@ const options = {
     },
   },
   height: '400px',
-  width: '780px',
+  width: '600px',
 };
 
 const LineChartTemperature = () => {
@@ -53,7 +53,8 @@ const LineChartTemperature = () => {
           value: entry.temperature,
         };
       });
-      const finalData = humidData.concat(tempData);
+      var finalData = humidData.concat(tempData);
+      finalData = finalData.reverse();
       //console.log(finalData);
       setData(finalData);
       setIsLoading(false);
