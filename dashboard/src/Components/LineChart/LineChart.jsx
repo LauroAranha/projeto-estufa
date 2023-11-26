@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { LineChart } from '@carbon/charts-react';
+import { LineChart as CarbonLineChart } from '@carbon/charts-react';
 import '@carbon/charts-react/styles.css';
 import moment from 'moment';
 import 'moment/min/locales.min';
@@ -25,10 +25,10 @@ const options = {
     },
   },
   height: '400px',
-  width: '600px',
+  width: '750px',
 };
 
-const LineChartTemperature = () => {
+const LineChart = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [triggerUpdate, setTriggerUpdate] = useState(true);
@@ -66,10 +66,10 @@ const LineChartTemperature = () => {
   return (
     <div className="line-chart-container">
       {!isLoading ? (
-        <LineChart data={data} options={options}></LineChart>
+        <CarbonLineChart data={data} options={options}></CarbonLineChart>
       ) : null}
     </div>
   );
 };
 
-export default LineChartTemperature;
+export default LineChart;

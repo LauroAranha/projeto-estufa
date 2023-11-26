@@ -5,7 +5,7 @@ import { getAverage } from '../../util/math.js';
 
 // Importando Components
 import PageTitle from '../../Components/PageTitle';
-import LineChartTemperature from '../../Components/LineChartTemperature';
+import LineChart from '../../Components/LineChart';
 import SideBar from '../../Components/SideBar';
 
 // Importando Imagens
@@ -67,7 +67,7 @@ const Overview = () => {
               </div>
             </div>
           </div>
-          <LineChartTemperature />
+          <LineChart />
         </div>
         <div className="side-bar-container">
           <SideBar />
