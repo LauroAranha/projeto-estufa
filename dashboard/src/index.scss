@@ -8,3 +8,14 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: #f6f6f6;
 }
+
+@media screen and (max-width: 500px) {
+  .top-container {
+    flex-direction: column;
+    width: 80vw;
+  }
+  .side-bar-container {
+    position: absolute;
+    bottom: -160vh;
+  }
+}
