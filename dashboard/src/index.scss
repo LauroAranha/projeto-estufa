@@ -12,10 +12,18 @@ body {
 @media screen and (max-width: 500px) {
   .top-container {
     flex-direction: column;
-    width: 80vw;
+    width: 395px;
+  }
+  .header-container {
+    width: max-content;
+    position: fixed;
+    z-index: 100;
+  }
+  .page-title {
+    margin-top: 80px;
   }
   .side-bar-container {
     position: absolute;
-    bottom: -160vh;
+    top: 1000px;
   }
 }
