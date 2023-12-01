@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Estufa</title>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+      @font-face {
+        font-family: 'IBM Plex Sans';
+        src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+      }
+      body {
+        background: linear-gradient(to bottom, #3498db, #2980b9);
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        padding: 20px;
+        margin: 0;
+        min-height: 100vh;
+      }
+      h1 {
+        color: #fff;
+        font-family: 'IBM Plex Sans', sans-serif;
+      }
+      #qrcode {
+        max-width: 300px;
+        margin: 20px auto;
+        margin-top: 100px;
+      }
+      button {
+        background-color: #2ecc71;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #27ae60;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Acesse nosso dashboard através do seu celular!!!</h1>
+    <div id="qrcode"></div>
+
+    <script>
+      var url = 'https://projeto-estufa.vercel.app/';
+
+      var qrcode = new QRCode(document.getElementById('qrcode'), {
+        text: url,
+        width: 200,
+        height: 200,
+      });
+    </script>
+  </body>
+</html>
+
