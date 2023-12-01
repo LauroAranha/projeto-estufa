@@ -9,13 +9,33 @@ body {
   background-color: #f6f6f6;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .top-container {
     flex-direction: column;
-    width: 395px;
+    width: 68vw;
+  }
+  .page-title {
+    font-size: 7vw;
+  }
+  .data-temp-humi-container {
+    margin-left: 0;
+  }
+  .data-temp-humi {
+    font-size: 5vh;
+  }
+  .temperature-humidity-container {
+    height: 20vh;
+  }
+  .temperature-humidity-container img {
+    height: 15vw;
+  }
+  .data-temp-humi-desc {
+    font-size: 2.5vh;
+    text-align: center;
   }
   .header-container {
-    width: max-content;
+    width: 100vw;
+    height: 10vh;
     position: fixed;
     z-index: 100;
   }
@@ -24,6 +44,10 @@ body {
   }
   .side-bar-container {
     position: absolute;
-    top: 1000px;
+    top: 930px;
+    right: 1vw;
+  }
+  .side-bar-content {
+    width: 90vw;
   }
 }
