@@ -1,10 +1,11 @@
+// Importando Libs
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
 import { LineChart as CarbonLineChart } from '@carbon/charts-react';
 import '@carbon/charts-react/styles.css';
 import moment from 'moment';
 import 'moment/min/locales.min';
 
+// Importando API
 import db from '../../api/database.js';
 
 // Importando estilos
@@ -20,7 +21,7 @@ const options = {
     },
     left: {
       mapsTo: 'value',
-      title: 'Soma de temperatura',
+      title: 'Temperatura/Humidade',
       scaleType: 'linear',
     },
   },
@@ -39,7 +40,7 @@ const LineChart = () => {
       const humidData = rawData.map((entry) => {
         moment.locale('pt-br');
         return {
-          group: 'Humidity',
+          group: 'Humidade',
           key: moment(entry.createdat).format('LT'),
           value: entry.humid,
         };
@@ -48,7 +49,7 @@ const LineChart = () => {
       const tempData = rawData.map((entry) => {
         moment.locale('pt-br');
         return {
-          group: 'Temperature',
+          group: 'Temperatura',
           key: moment(entry.createdat).format('LT'),
           value: entry.temperature,
         };
