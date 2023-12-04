@@ -21,17 +21,23 @@
   .cells-container-overview:focus {
     border-bottom: 3px solid #f1934f !important;
   }
-  .cells-container-history {
+  // .cells-container-history {
+  //   color: #81d8af;
+  // }
+  // .cells-container-history:focus {
+  //   border-bottom: 3px solid #81d8af !important;
+  // }
+  // .cells-container-economy {
+  //   color: #a9d850;
+  // }
+  // .cells-container-economy:focus {
+  //   border-bottom: 3px solid #a9d850 !important;
+  // }
+  .cells-container-about {
     color: #81d8af;
   }
-  .cells-container-history:focus {
+  .cells-container-about:focus {
     border-bottom: 3px solid #81d8af !important;
-  }
-  .cells-container-economy {
-    color: #a9d850;
-  }
-  .cells-container-economy:focus {
-    border-bottom: 3px solid #a9d850 !important;
   }
   .css-1e6y48t-MuiButtonBase-root-MuiButton-root:focus {
   }
