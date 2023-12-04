@@ -10,6 +10,18 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+
+
+  .line-chart-container{
+    width: 90vw;
+    overflow-x: overlay;
+    overflow-x: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    padding-right:12px ;
+  }
   .top-container {
     flex-direction: column;
     width: 68vw;
@@ -44,7 +56,7 @@ body {
   }
   .side-bar-container {
     position: absolute;
-    top: 930px;
+    top: 970px;
     right: 1vw;
   }
   .side-bar-content {
