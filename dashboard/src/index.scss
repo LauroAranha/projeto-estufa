@@ -21,6 +21,25 @@ body {
     position: relative;
     left: -4vw;
   }
+  .navbar-container {
+    position: relative;
+    right: 5vw;
+    padding-left: 1vw;
+    height: 8vh;
+  }
+  .navbar-container .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    padding: 32px 0px 22px 14px;
+  }
+
+  .container-logo {
+    padding-left: 1vw;
+    padding-right: 2vw;
+    margin-right: 15vw;
+  }
+  .logo-img {
+    width: 28vw;
+  }
+
   ::-webkit-scrollbar-track {
     background-color: #626262;
     padding-right: 30px;
