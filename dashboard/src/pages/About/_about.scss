@@ -1,0 +1,95 @@
+.container-about {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .container-introduction {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 24px;
+    align-items: flex-start;
+  }
+  .introduction-title {
+    color: black;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  .content-introduction {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .content-text-introduction {
+    font-size: 1rem;
+    color: black;
+    font-weight: 300;
+    word-wrap: break-word;
+  }
+  .container-groups {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 24px;
+    align-items: flex-start;
+  }
+  .groups-title {
+    color: black;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  .content-title-groups {
+    color: black;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  .align-groups {
+    display: flex;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  .groups {
+    display: flex;
+    flex-direction: column;
+    border: 1px #e0e0e0 solid;
+    border-radius: 8px;
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .content-text-groups {
+    font-size: 1rem;
+    color: black;
+    font-weight: 300;
+    word-wrap: break-word;
+  }
+
+  .components-list {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .arduino-imgs {
+    align-self: center;
+    width: 300px;
+    height: auto;
+    object-fit: fill;
+  }
+
+  .content-greenhouse {
+    display: flex;
+    margin-top: 1rem;
+    gap: 4.8rem;
+    align-self: center;
+  }
+  .greenhouse-imgs {
+    align-self: center;
+    width: 400px;
+    height: 300px;
+    object-fit: fill;
+  }
+}
