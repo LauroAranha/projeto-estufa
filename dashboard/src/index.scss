@@ -10,9 +10,7 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-
-
-  .line-chart-container{
+  .line-chart-container {
     width: 90vw;
     overflow-x: overlay;
     overflow-x: auto;
@@ -20,8 +18,21 @@ body {
     overflow-y: hidden;
     white-space: nowrap;
     padding-bottom: 10px;
-    padding-right:12px ;
+    position: relative;
+    left: -4vw;
   }
+  ::-webkit-scrollbar-track {
+    background-color: #626262;
+    padding-right: 30px;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+    background: #f4f4f4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #f1934f;
+  }
+
   .top-container {
     flex-direction: column;
     width: 68vw;
