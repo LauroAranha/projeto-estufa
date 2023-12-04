@@ -36,6 +36,7 @@
     border-radius: 8px;
     padding: 24px;
     align-items: flex-start;
+    flex-direction: column;
   }
   .groups-title {
     color: black;
@@ -91,5 +92,31 @@
     width: 400px;
     height: 300px;
     object-fit: fill;
+  }
+
+  @media screen and (max-width: 600px) {
+    .align-groups,
+    .content-greenhouse {
+      flex-direction: column;
+    }
+    .groups {
+      width: 70vw;
+    }
+    .arduino-imgs {
+      width: 60vw;
+    }
+    .greenhouse-imgs {
+      width: 60vw;
+      height: 40vw;
+    }
+    .introduction-title {
+      font-size: 10vw;
+    }
+    .groups-title {
+      font-size: 10vw;
+    }
+    .container-introduction {
+      margin-top: 9vh;
+    }
   }
 }
